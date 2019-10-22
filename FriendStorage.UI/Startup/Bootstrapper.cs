@@ -9,25 +9,25 @@ using FriendStorage.UI.View.Services;
 
 namespace FriendStorage.UI.Startup
 {
-  public class Bootstrapper
-  {
-    public IContainer Bootstrap()
+    public class Bootstrapper
     {
-      var builder = new ContainerBuilder();
+        public static IContainer Bootstrap()
+        {
+            ContainerBuilder builder = new ContainerBuilder();
 
-      builder.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
-      builder.RegisterType<MessageDialogService>().As<IMessageDialogService>();
+            builder.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
+            builder.RegisterType<MessageDialogService>().As<IMessageDialogService>();
 
-      builder.RegisterType<FileDataService>().As<IDataService>();
-      builder.RegisterType<FriendLookupProvider>().As<ILookupProvider<Friend>>();
-      builder.RegisterType<FriendGroupLookupProvider>().As<ILookupProvider<FriendGroup>>();
-      builder.RegisterType<FriendDataProvider>().As<IFriendDataProvider>();
+            builder.RegisterType<FileDataService>().As<IDataService>();
+            builder.RegisterType<FriendLookupProvider>().As<ILookupProvider<Friend>>();
+            builder.RegisterType<FriendGroupLookupProvider>().As<ILookupProvider<FriendGroup>>();
+            builder.RegisterType<FriendDataProvider>().As<IFriendDataProvider>();
 
-      builder.RegisterType<FriendEditViewModel>().As<IFriendEditViewModel>();
-      builder.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
-      builder.RegisterType<MainViewModel>().AsSelf();
+            builder.RegisterType<FriendEditViewModel>().As<IFriendEditViewModel>();
+            builder.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
+            builder.RegisterType<MainViewModel>().AsSelf();
 
-      return builder.Build();
+            return builder.Build();
+        }
     }
-  }
 }

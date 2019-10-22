@@ -2,8 +2,8 @@
 
 namespace FriendStorage.UI.DataProvider.Lookups
 {
-  public interface ILookupProvider<T>
-  {
-    IEnumerable<LookupItem> GetLookup();
-  }
+    public interface ILookupProvider<T>
+    {
+        IEnumerable<LookupItem> GetLookup();
+    }
 }

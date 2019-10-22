@@ -1,60 +1,56 @@
 ﻿using FriendStorage.Model;
 using FriendStorage.UI.Wrapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FriendStorage.UITests.Wrapper
 {
-  [TestClass]
- public class ChangeNotificationSimpleProperty
-  {
-    private Friend _friend;
-
-    [TestInitialize]
-    public void Initialize()
+    [TestClass]
+    public class ChangeNotificationSimpleProperty
     {
-      _friend = new Friend
-      {
-        FirstName = "Thomas",
-        Address = new Address(),
-        Emails = new List<FriendEmail>()
-      };
-    }
+        private Friend _friend;
 
-    [TestMethod]
-    public void ShouldRaisePropertyChangedEventOnPropertyChange()
-    {
-      var fired = false;
-      var wrapper = new FriendWrapper(_friend);
-      wrapper.PropertyChanged += (s, e) =>
-      {
-        if (e.PropertyName == "FirstName")
+        [TestInitialize]
+        public void Initialize()
         {
-          fired = true;
+            _friend = new Friend
+            {
+                FirstName = "Thomas",
+                Address = new Address(),
+                Emails = new List<FriendEmail>()
+            };
         }
-      };
-      wrapper.FirstName = "Julia";
-      Assert.IsTrue(fired);
-    }
 
-    [TestMethod]
-    public void ShouldNotRaisePropertyChangedEventIfPropertyIsSetToSameValue()
-    {
-      var fired = false;
-      var wrapper = new FriendWrapper(_friend);
-      wrapper.PropertyChanged += (s, e) =>
-      {
-        if (e.PropertyName == "FirstName")
+        [TestMethod]
+        public void ShouldRaisePropertyChangedEventOnPropertyChange()
         {
-          fired = true;
+            bool fired = false;
+            FriendWrapper wrapper = new FriendWrapper(_friend);
+            wrapper.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "FirstName")
+                {
+                    fired = true;
+                }
+            };
+            wrapper.FirstName = "Julia";
+            Assert.IsTrue(fired);
         }
-      };
-      wrapper.FirstName = "Thomas";
-      Assert.IsFalse(fired);
+
+        [TestMethod]
+        public void ShouldNotRaisePropertyChangedEventIfPropertyIsSetToSameValue()
+        {
+            bool fired = false;
+            FriendWrapper wrapper = new FriendWrapper(_friend);
+            wrapper.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == "FirstName")
+                {
+                    fired = true;
+                }
+            };
+            wrapper.FirstName = "Thomas";
+            Assert.IsFalse(fired);
+        }
     }
-  }
 }

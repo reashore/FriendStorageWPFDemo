@@ -22,9 +22,9 @@ namespace FriendStorage.UI.View.Services
       {
         buttons = new[] { MessageDialogResult.Ok };
       }
-      foreach (var button in buttons)
+      foreach (MessageDialogResult button in buttons)
       {
-        var btn = new Button { Content = button, Tag = button };
+        Button btn = new Button { Content = button, Tag = button };
         ButtonsPanel.Children.Add(btn);
         btn.Click += ButtonClick;
       }
@@ -32,7 +32,7 @@ namespace FriendStorage.UI.View.Services
 
     private void ButtonClick(object sender, RoutedEventArgs e)
     {
-      var button = e.Source as Button;
+      Button button = e.Source as Button;
       if (button != null)
       {
         _result = (MessageDialogResult)button.Tag;
