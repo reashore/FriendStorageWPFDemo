@@ -15,10 +15,10 @@ namespace FriendStorage.UITests.Wrapper
         public void Initialize()
         {
             _emails = new List<FriendEmailWrapper>
-      {
-        new FriendEmailWrapper(new FriendEmail {Email="thomas@thomasclaudiushuber.com" }),
-        new FriendEmailWrapper(new FriendEmail {Email="julia@juhu-design.com" }),
-       };
+              {
+                new FriendEmailWrapper(new FriendEmail {Email="thomas@thomasclaudiushuber.com" }),
+                new FriendEmailWrapper(new FriendEmail {Email="julia@juhu-design.com" })
+               };
         }
 
         [TestMethod]

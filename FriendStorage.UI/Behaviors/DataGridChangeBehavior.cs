@@ -26,9 +26,7 @@ namespace FriendStorage.UI.Behaviors
 
         private static void OnIsActivePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DataGrid dataGrid = d as DataGrid;
-
-            if (dataGrid != null)
+            if (d is DataGrid dataGrid)
             {
                 if ((bool) e.NewValue)
                 {
@@ -46,14 +44,10 @@ namespace FriendStorage.UI.Behaviors
             DataGrid dataGrid = (DataGrid)sender;
             foreach (DataGridTextColumn textColumn in dataGrid.Columns.OfType<DataGridTextColumn>())
             {
-                Binding binding = textColumn.Binding as Binding;
-                if (binding != null)
+                if (textColumn.Binding is Binding binding)
                 {
-                    textColumn.EditingElementStyle
-                      = CreateEditingElementStyle(dataGrid, binding.Path.Path);
-
-                    textColumn.ElementStyle
-                      = CreateElementStyle(dataGrid, binding.Path.Path);
+                    textColumn.EditingElementStyle = CreateEditingElementStyle(dataGrid, binding.Path.Path);
+                    textColumn.ElementStyle = CreateElementStyle(dataGrid, binding.Path.Path);
                 }
             }
         }

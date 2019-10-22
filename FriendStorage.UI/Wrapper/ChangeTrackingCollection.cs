@@ -104,6 +104,7 @@ namespace FriendStorage.UI.Wrapper
             else
             {
                 T item = (T)sender;
+
                 if (_addedItems.Contains(item))
                 {
                     return;
@@ -123,6 +124,7 @@ namespace FriendStorage.UI.Wrapper
                         _modifiedItems.Remove(item);
                     }
                 }
+
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(IsChanged)));
             }
         }

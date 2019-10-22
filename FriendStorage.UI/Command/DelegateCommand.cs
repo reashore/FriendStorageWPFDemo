@@ -28,11 +28,8 @@ namespace FriendStorage.UI.Command
 
         public void RaiseCanExecuteChanged()
         {
-            EventHandler handler = CanExecuteChanged;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
+            EventHandler eventHandler = CanExecuteChanged;
+            eventHandler?.Invoke(this, EventArgs.Empty);
         }
     }
 }

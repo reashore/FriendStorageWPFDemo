@@ -35,11 +35,12 @@ namespace FriendStorage.UITests.Wrapper
         {
             try
             {
+                // ReSharper disable once UnusedVariable
                 FriendWrapper wrapper = new FriendWrapper(null);
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException argumentNullException)
             {
-                Assert.AreEqual("model", ex.ParamName);
+                Assert.AreEqual("model", argumentNullException.ParamName);
                 throw;
             }
         }
@@ -51,11 +52,12 @@ namespace FriendStorage.UITests.Wrapper
             try
             {
                 _friend.Address = null;
+                // ReSharper disable once UnusedVariable
                 FriendWrapper wrapper = new FriendWrapper(_friend);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException argumentException)
             {
-                Assert.AreEqual("Address cannot be null", ex.Message);
+                Assert.AreEqual("Address cannot be null", argumentException.Message);
                 throw;
             }
         }
@@ -67,11 +69,12 @@ namespace FriendStorage.UITests.Wrapper
             try
             {
                 _friend.Emails = null;
+                // ReSharper disable once UnusedVariable
                 FriendWrapper wrapper = new FriendWrapper(_friend);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException argumentException)
             {
-                Assert.AreEqual("Emails cannot be null", ex.Message);
+                Assert.AreEqual("Emails cannot be null", argumentException.Message);
                 throw;
             }
         }

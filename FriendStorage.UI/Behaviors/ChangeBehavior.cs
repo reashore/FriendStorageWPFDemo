@@ -14,7 +14,7 @@ namespace FriendStorage.UI.Behaviors
         public static readonly DependencyProperty OriginalValueProperty;
         public static readonly DependencyProperty OriginalValueConverterProperty;
 
-        private static readonly Dictionary<Type, DependencyProperty> _defaultProperties;
+        private static readonly Dictionary<Type, DependencyProperty> DefaultProperties;
 
         static ChangeBehavior()
         {
@@ -23,7 +23,7 @@ namespace FriendStorage.UI.Behaviors
             OriginalValueProperty = DependencyProperty.RegisterAttached("OriginalValue", typeof(object), typeof(ChangeBehavior), new PropertyMetadata(null));
             OriginalValueConverterProperty = DependencyProperty.RegisterAttached("OriginalValueConverter", typeof(IValueConverter), typeof(ChangeBehavior), new PropertyMetadata(null, OnOriginalValueConverterPropertyChanged));
 
-            _defaultProperties = new Dictionary<Type, DependencyProperty>
+            DefaultProperties = new Dictionary<Type, DependencyProperty>
             {
                 [typeof(TextBox)] = TextBox.TextProperty,
                 [typeof(CheckBox)] = ToggleButton.IsCheckedProperty,
@@ -54,7 +54,7 @@ namespace FriendStorage.UI.Behaviors
 
         public static object GetOriginalValue(DependencyObject obj)
         {
-            return (object)obj.GetValue(OriginalValueProperty);
+            return obj.GetValue(OriginalValueProperty);
         }
 
         public static void SetOriginalValue(DependencyObject obj, object value)
@@ -74,25 +74,28 @@ namespace FriendStorage.UI.Behaviors
 
         private static void OnIsActivePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (_defaultProperties.ContainsKey(d.GetType()))
+            if (!DefaultProperties.ContainsKey(d.GetType()))
             {
-                DependencyProperty defaultProperty = _defaultProperties[d.GetType()];
-                if ((bool)e.NewValue)
+                return;
+            }
+
+            DependencyProperty defaultProperty = DefaultProperties[d.GetType()];
+
+            if ((bool) e.NewValue)
+            {
+                Binding binding = BindingOperations.GetBinding(d, defaultProperty);
+
+                if (binding != null)
                 {
-                    Binding binding = BindingOperations.GetBinding(d, defaultProperty);
-                    if (binding != null)
-                    {
-                        string bindingPath = binding.Path.Path;
-                        BindingOperations.SetBinding(d, IsChangedProperty,
-                          new Binding(bindingPath + "IsChanged"));
-                        CreateOriginalValueBinding(d, bindingPath + "OriginalValue");
-                    }
+                    string bindingPath = binding.Path.Path;
+                    BindingOperations.SetBinding(d, IsChangedProperty, new Binding(bindingPath + "IsChanged"));
+                    CreateOriginalValueBinding(d, bindingPath + "OriginalValue");
                 }
-                else
-                {
-                    BindingOperations.ClearBinding(d, IsChangedProperty);
-                    BindingOperations.ClearBinding(d, OriginalValueProperty);
-                }
+            }
+            else
+            {
+                BindingOperations.ClearBinding(d, IsChangedProperty);
+                BindingOperations.ClearBinding(d, OriginalValueProperty);
             }
         }
 

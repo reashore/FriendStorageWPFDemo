@@ -122,9 +122,11 @@
                                       Background="{TemplateBinding Background}"
                                       Foreground="{TemplateBinding Foreground}"
                                       Grid.ColumnSpan="2"
+                                      Grid.Column="0"
                                       IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                       Style="{StaticResource ComboBoxToggleButton}" />
-                        <ContentPresenter x:Name="contentPresenter"
+                        <ContentPresenter Grid.Column="0"
+                                          x:Name="contentPresenter"
                                           ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                           ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                                           Content="{TemplateBinding SelectionBoxItem}"

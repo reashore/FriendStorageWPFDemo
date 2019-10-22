@@ -9,13 +9,7 @@ namespace FriendStorage.UI.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             DateTime? dateTime = (DateTime?) value;
-
-            if (dateTime.HasValue)
-            {
-                return dateTime.Value.ToString("dd.MM.yyyy");
-            }
-
-            return value;
+            return dateTime?.ToString("dd-MM-yyyy") ?? value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

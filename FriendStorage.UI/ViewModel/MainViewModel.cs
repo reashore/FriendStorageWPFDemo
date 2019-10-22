@@ -12,7 +12,6 @@ namespace FriendStorage.UI.ViewModel
 {
     public class MainViewModel : Observable
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly IMessageDialogService _messageDialogService;
         private IFriendEditViewModel _selectedFriendEditViewModel;
         private readonly Func<IFriendEditViewModel> _friendEditViewModelCreator;
@@ -22,10 +21,9 @@ namespace FriendStorage.UI.ViewModel
             INavigationViewModel navigationViewModel,
             Func<IFriendEditViewModel> friendEditViewModelCreator)
         {
-            _eventAggregator = eventAggregator;
             _messageDialogService = messageDialogService;
-            _eventAggregator.GetEvent<OpenFriendEditViewEvent>().Subscribe(OnOpenFriendTab);
-            _eventAggregator.GetEvent<FriendDeletedEvent>().Subscribe(OnFriendDeleted);
+            eventAggregator.GetEvent<OpenFriendEditViewEvent>().Subscribe(OnOpenFriendTab);
+            eventAggregator.GetEvent<FriendDeletedEvent>().Subscribe(OnFriendDeleted);
 
             NavigationViewModel = navigationViewModel;
             _friendEditViewModelCreator = friendEditViewModelCreator;
@@ -81,33 +79,34 @@ namespace FriendStorage.UI.ViewModel
 
         private void OnOpenFriendTab(int friendId)
         {
-            IFriendEditViewModel friendEditVm =
-              FriendEditViewModels.SingleOrDefault(vm => vm.Friend.Id == friendId);
+            IFriendEditViewModel friendEditVm = FriendEditViewModels.SingleOrDefault(vm => vm.Friend.Id == friendId);
+
             if (friendEditVm == null)
             {
                 friendEditVm = _friendEditViewModelCreator();
                 FriendEditViewModels.Add(friendEditVm);
                 friendEditVm.Load(friendId);
             }
+
             SelectedFriendEditViewModel = friendEditVm;
         }
 
         private void OnCloseFriendTabExecute(object parameter)
         {
-            IFriendEditViewModel friendEditVmToClose = parameter as IFriendEditViewModel;
-
-            if (friendEditVmToClose != null)
+            if (parameter is IFriendEditViewModel friendEditVmToClose)
             {
                 if (friendEditVmToClose.Friend.IsChanged)
                 {
                     MessageDialogResult result = _messageDialogService.ShowYesNoDialog("Close tab?",
                       "You'll lose your changes if you close this tab. Close it?",
                       MessageDialogResult.No);
+
                     if (result == MessageDialogResult.No)
                     {
                         return;
                     }
                 }
+
                 FriendEditViewModels.Remove(friendEditVmToClose);
             }
         }

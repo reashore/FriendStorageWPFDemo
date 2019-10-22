@@ -21,10 +21,10 @@ namespace FriendStorage.UITests.Wrapper
                 FirstName = "Thomas",
                 Address = new Address(),
                 Emails = new List<FriendEmail>
-        {
-          new FriendEmail {Email="julia@juhu-design.com" },
-          _friendEmail,
-        }
+                {
+                  new FriendEmail {Email="julia@juhu-design.com" },
+                  _friendEmail
+                }
             };
         }
 

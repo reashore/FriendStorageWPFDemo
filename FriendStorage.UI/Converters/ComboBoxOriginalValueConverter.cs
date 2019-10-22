@@ -12,9 +12,10 @@ namespace FriendStorage.UI.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int id = (int) value;
+
             ComboBox comboBox = parameter as ComboBox;
 
-            if (comboBox != null && comboBox.ItemsSource != null)
+            if (comboBox?.ItemsSource != null)
             {
                 LookupItem lookupItem = comboBox.ItemsSource.OfType<LookupItem>().SingleOrDefault(l => l.Id == id);
 
@@ -23,6 +24,7 @@ namespace FriendStorage.UI.Converters
                     return lookupItem.DisplayValue;
                 }
             }
+
             return value;
         }
 

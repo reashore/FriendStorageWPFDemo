@@ -2,11 +2,11 @@
 
 namespace FriendStorage.UI.View
 {
-  public partial class NavigationView : UserControl
-  {
-    public NavigationView()
+    public partial class NavigationView : UserControl
     {
-      InitializeComponent();
+        public NavigationView()
+        {
+            InitializeComponent();
+        }
     }
-  }
 }
