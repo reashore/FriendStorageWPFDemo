@@ -27,7 +27,7 @@ namespace FriendStorage.UI.Wrapper
               : Enumerable.Empty<string>();
         }
 
-        protected virtual void OnErrorsChanged(string propertyName)
+        protected void OnErrorsChanged(string propertyName)
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }

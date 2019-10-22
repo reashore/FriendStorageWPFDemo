@@ -27,9 +27,10 @@ namespace FriendStorage.UI.Behaviors
         private static void OnIsActivePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DataGrid dataGrid = d as DataGrid;
+
             if (dataGrid != null)
             {
-                if ((bool)e.NewValue)
+                if ((bool) e.NewValue)
                 {
                     dataGrid.Loaded += DataGrid_Loaded;
                 }

@@ -98,8 +98,8 @@ namespace FriendStorage.UI.Behaviors
 
         private static void OnOriginalValueConverterPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Binding originalValueBinding
-              = BindingOperations.GetBinding(d, OriginalValueProperty) as Binding;
+            Binding originalValueBinding = BindingOperations.GetBinding(d, OriginalValueProperty);
+
             if (originalValueBinding != null)
             {
                 CreateOriginalValueBinding(d, originalValueBinding.Path.Path);

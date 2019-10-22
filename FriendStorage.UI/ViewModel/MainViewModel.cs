@@ -95,6 +95,7 @@ namespace FriendStorage.UI.ViewModel
         private void OnCloseFriendTabExecute(object parameter)
         {
             IFriendEditViewModel friendEditVmToClose = parameter as IFriendEditViewModel;
+
             if (friendEditVmToClose != null)
             {
                 if (friendEditVmToClose.Friend.IsChanged)
@@ -113,8 +114,8 @@ namespace FriendStorage.UI.ViewModel
 
         private void OnFriendDeleted(int friendId)
         {
-            IFriendEditViewModel friendDetailVmToClose
-              = FriendEditViewModels.SingleOrDefault(f => f.Friend.Id == friendId);
+            IFriendEditViewModel friendDetailVmToClose = FriendEditViewModels.SingleOrDefault(f => f.Friend.Id == friendId);
+
             if (friendDetailVmToClose != null)
             {
                 FriendEditViewModels.Remove(friendDetailVmToClose);
