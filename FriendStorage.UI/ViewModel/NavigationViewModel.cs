@@ -80,7 +80,7 @@ namespace FriendStorage.UI.ViewModel
         {
             FriendId = friendId;
             DisplayValue = displayValue;
-            _eventAggregator = eventAggregator; ;
+            _eventAggregator = eventAggregator; 
             OpenFriendEditViewCommand = new DelegateCommand(OpenFriendEditViewExecute);
         }
 
@@ -90,7 +90,7 @@ namespace FriendStorage.UI.ViewModel
 
         public string DisplayValue
         {
-            get { return _displayValue; }
+            get => _displayValue;
             set
             {
                 _displayValue = value;

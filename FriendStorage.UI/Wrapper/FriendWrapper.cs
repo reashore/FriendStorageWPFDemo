@@ -36,8 +36,8 @@ namespace FriendStorage.UI.Wrapper
 
         public int Id
         {
-            get { return GetValue<int>(); }
-            set { SetValue(value); }
+            get => GetValue<int>();
+            set => SetValue(value);
         }
 
         public int IdOriginalValue => GetOriginalValue<int>(nameof(Id));
@@ -46,8 +46,8 @@ namespace FriendStorage.UI.Wrapper
 
         public int FriendGroupId
         {
-            get { return GetValue<int>(); }
-            set { SetValue(value); }
+            get => GetValue<int>();
+            set => SetValue(value);
         }
 
         public int FriendGroupIdOriginalValue => GetOriginalValue<int>(nameof(FriendGroupId));
@@ -56,8 +56,8 @@ namespace FriendStorage.UI.Wrapper
 
         public string FirstName
         {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
 
         public string FirstNameOriginalValue => GetOriginalValue<string>(nameof(FirstName));
@@ -66,8 +66,8 @@ namespace FriendStorage.UI.Wrapper
 
         public string LastName
         {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
 
         public string LastNameOriginalValue => GetOriginalValue<string>(nameof(LastName));
@@ -76,8 +76,8 @@ namespace FriendStorage.UI.Wrapper
 
         public DateTime? Birthday
         {
-            get { return GetValue<DateTime?>(); }
-            set { SetValue(value); }
+            get => GetValue<DateTime?>();
+            set => SetValue(value);
         }
 
         public DateTime? BirthdayOriginalValue => GetOriginalValue<DateTime?>(nameof(Birthday));
@@ -86,8 +86,8 @@ namespace FriendStorage.UI.Wrapper
 
         public bool IsDeveloper
         {
-            get { return GetValue<bool>(); }
-            set { SetValue(value); }
+            get => GetValue<bool>();
+            set => SetValue(value);
         }
 
         public bool IsDeveloperOriginalValue => GetOriginalValue<bool>(nameof(IsDeveloper));
@@ -105,6 +105,7 @@ namespace FriendStorage.UI.Wrapper
                 yield return new ValidationResult("Firstname is required",
                   new[] { nameof(FirstName) });
             }
+
             if (IsDeveloper && Emails.Count == 0)
             {
                 yield return new ValidationResult("A developer must have an email-address",

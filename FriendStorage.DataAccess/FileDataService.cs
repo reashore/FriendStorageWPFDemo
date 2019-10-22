@@ -37,7 +37,7 @@ namespace FriendStorage.DataAccess
             SaveToFile(friends);
         }
 
-        private void UpdateFriend(Friend friend)
+        private static void UpdateFriend(Friend friend)
         {
             List<Friend> friends = ReadFromFile();
             Friend existing = friends.Single(f => f.Id == friend.Id);
@@ -47,7 +47,7 @@ namespace FriendStorage.DataAccess
             SaveToFile(friends);
         }
 
-        private void InsertFriend(Friend friend)
+        private static void InsertFriend(Friend friend)
         {
             List<Friend> friends = ReadFromFile();
             int maxFriendId = friends.Max(f => f.Id);
@@ -76,13 +76,13 @@ namespace FriendStorage.DataAccess
             // to show how to use an IDisposable in the client with a Func<T>. =>  Look for example at the FriendDataProvider-class
         }
 
-        private void SaveToFile(List<Friend> friendList)
+        private static void SaveToFile(List<Friend> friendList)
         {
             string json = JsonConvert.SerializeObject(friendList, Formatting.Indented);
             File.WriteAllText(StorageFile, json);
         }
 
-        private List<Friend> ReadFromFile()
+        private static List<Friend> ReadFromFile()
         {
             if (!File.Exists(StorageFile))
             {

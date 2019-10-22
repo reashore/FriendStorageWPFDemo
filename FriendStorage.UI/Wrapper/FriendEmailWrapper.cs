@@ -11,8 +11,8 @@ namespace FriendStorage.UI.Wrapper
 
         public int Id
         {
-            get { return GetValue<int>(); }
-            set { SetValue(value); }
+            get => GetValue<int>();
+            set => SetValue(value);
         }
 
         public int IdOriginalValue => GetOriginalValue<int>(nameof(Id));
@@ -23,8 +23,8 @@ namespace FriendStorage.UI.Wrapper
         [EmailAddress(ErrorMessage = "Email is not a valid email address")]
         public string Email
         {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
 
         public string EmailOriginalValue => GetOriginalValue<string>(nameof(Email));
@@ -33,8 +33,8 @@ namespace FriendStorage.UI.Wrapper
 
         public string Comment
         {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
 
         public string CommentOriginalValue => GetOriginalValue<string>(nameof(Comment));

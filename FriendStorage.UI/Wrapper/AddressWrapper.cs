@@ -11,8 +11,8 @@ namespace FriendStorage.UI.Wrapper
 
         public int Id
         {
-            get { return GetValue<int>(); }
-            set { SetValue(value); }
+            get => GetValue<int>();
+            set => SetValue(value);
         }
 
         public int IdOriginalValue => GetOriginalValue<int>(nameof(Id));
@@ -22,8 +22,8 @@ namespace FriendStorage.UI.Wrapper
         [Required(ErrorMessage = "City is required")]
         public string City
         {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
 
         public string CityOriginalValue => GetOriginalValue<string>(nameof(City));
@@ -32,8 +32,8 @@ namespace FriendStorage.UI.Wrapper
 
         public string Street
         {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
 
         public string StreetOriginalValue => GetOriginalValue<string>(nameof(Street));
@@ -42,8 +42,8 @@ namespace FriendStorage.UI.Wrapper
 
         public string StreetNumber
         {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
+            get => GetValue<string>();
+            set => SetValue(value);
         }
 
         public string StreetNumberOriginalValue => GetOriginalValue<string>(nameof(StreetNumber));

@@ -67,7 +67,7 @@ namespace FriendStorage.UITests.Wrapper
         {
             FriendEmailWrapper emailToAdd = new FriendEmailWrapper(new FriendEmail());
             FriendWrapper wrapper = new FriendWrapper(_friend);
-            Assert.IsTrue(wrapper.IsValid); ;
+            Assert.IsTrue(wrapper.IsValid); 
             wrapper.Emails.Add(emailToAdd);
             Assert.IsFalse(wrapper.IsValid);
             emailToAdd.Email = "thomas@thomasclaudiushuber.com";

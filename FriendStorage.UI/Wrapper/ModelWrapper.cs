@@ -11,15 +11,14 @@ namespace FriendStorage.UI.Wrapper
     public class ModelWrapper<T> : NotifyDataErrorInfoBase,
       IValidatableTrackingObject, IValidatableObject
     {
-        private Dictionary<string, object> _originalValues;
-
-        private List<IValidatableTrackingObject> _trackingObjects;
+        private readonly Dictionary<string, object> _originalValues;
+        private readonly List<IValidatableTrackingObject> _trackingObjects;
 
         public ModelWrapper(T model)
         {
             if (model == null)
             {
-                throw new ArgumentNullException("model");
+                throw new ArgumentNullException(nameof(model));
             }
             Model = model;
             _originalValues = new Dictionary<string, object>();

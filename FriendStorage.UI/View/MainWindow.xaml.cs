@@ -4,21 +4,21 @@ using FriendStorage.UI.ViewModel;
 
 namespace FriendStorage.UI.View
 {
-  public partial class MainWindow : Window
-  {
-    private MainViewModel _viewModel;
-
-    public MainWindow(MainViewModel viewModel)
+    public partial class MainWindow : Window
     {
-      InitializeComponent();
-      _viewModel = viewModel;
-      DataContext = _viewModel;
-    }
+        private readonly MainViewModel _viewModel;
 
-    protected override void OnClosing(CancelEventArgs e)
-    {
-      base.OnClosing(e);
-      _viewModel.OnClosing(e);
+        public MainWindow(MainViewModel viewModel)
+        {
+            InitializeComponent();
+            _viewModel = viewModel;
+            DataContext = _viewModel;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            _viewModel.OnClosing(e);
+        }
     }
-  }
 }

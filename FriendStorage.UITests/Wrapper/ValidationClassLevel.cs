@@ -29,7 +29,7 @@ namespace FriendStorage.UITests.Wrapper
         [TestMethod]
         public void ShouldHaveErrorsAndNotBeValidWhenIsDeveloperIsTrueAndNoEmailExists()
         {
-            string expectedError = "A developer must have an email-address";
+            const string expectedError = "A developer must have an email-address";
 
             FriendWrapper wrapper = new FriendWrapper(_friend);
             wrapper.Emails.Clear();

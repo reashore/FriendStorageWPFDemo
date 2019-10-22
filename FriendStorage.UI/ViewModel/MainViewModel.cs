@@ -15,8 +15,7 @@ namespace FriendStorage.UI.ViewModel
         private readonly IEventAggregator _eventAggregator;
         private readonly IMessageDialogService _messageDialogService;
         private IFriendEditViewModel _selectedFriendEditViewModel;
-
-        private Func<IFriendEditViewModel> _friendEditViewModelCreator;
+        private readonly Func<IFriendEditViewModel> _friendEditViewModelCreator;
 
         public MainViewModel(IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService,
@@ -62,7 +61,7 @@ namespace FriendStorage.UI.ViewModel
 
         public IFriendEditViewModel SelectedFriendEditViewModel
         {
-            get { return _selectedFriendEditViewModel; }
+            get => _selectedFriendEditViewModel;
             set
             {
                 _selectedFriendEditViewModel = value;

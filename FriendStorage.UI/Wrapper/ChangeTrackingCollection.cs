@@ -10,10 +10,9 @@ namespace FriendStorage.UI.Wrapper
       where T : class, IValidatableTrackingObject
     {
         private IList<T> _originalCollection;
-
-        private ObservableCollection<T> _addedItems;
-        private ObservableCollection<T> _removedItems;
-        private ObservableCollection<T> _modifiedItems;
+        private readonly ObservableCollection<T> _addedItems;
+        private readonly ObservableCollection<T> _removedItems;
+        private readonly ObservableCollection<T> _modifiedItems;
 
         public ChangeTrackingCollection(IEnumerable<T> items)
             : base(items)
@@ -35,13 +34,7 @@ namespace FriendStorage.UI.Wrapper
         public ReadOnlyObservableCollection<T> RemovedItems { get; private set; }
         public ReadOnlyObservableCollection<T> ModifiedItems { get; private set; }
 
-        public bool IsChanged
-        {
-            get
-            {
-                return AddedItems.Count > 0 || RemovedItems.Count > 0 || ModifiedItems.Count > 0;
-            }
-        }
+        public bool IsChanged => AddedItems.Count > 0 || RemovedItems.Count > 0 || ModifiedItems.Count > 0;
 
         public bool IsValid
         {
@@ -150,7 +143,7 @@ namespace FriendStorage.UI.Wrapper
             }
         }
 
-        private void UpdateObservableCollection(ObservableCollection<T> collection, IEnumerable<T> items)
+        private static void UpdateObservableCollection(ObservableCollection<T> collection, IEnumerable<T> items)
         {
             collection.Clear();
             foreach (T item in items)

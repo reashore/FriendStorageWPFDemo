@@ -1,11 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using FriendStorage.Model;
+using FriendStorage.UI.Wrapper;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FriendStorage.UI.Wrapper.Tests
+namespace FriendStorage.UITests.Wrapper
 {
-    [TestClass()]
+    [TestClass]
     public class BasicTests
     {
         private Friend _friend;
@@ -21,7 +22,7 @@ namespace FriendStorage.UI.Wrapper.Tests
             };
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ShouldContainModelInModelProperty()
         {
             FriendWrapper wrapper = new FriendWrapper(_friend);

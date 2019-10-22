@@ -67,7 +67,7 @@ namespace FriendStorage.UI.ViewModel
 
         public FriendWrapper Friend
         {
-            get { return _friend; }
+            get => _friend;
             private set
             {
                 _friend = value;
@@ -77,7 +77,7 @@ namespace FriendStorage.UI.ViewModel
 
         public IEnumerable<LookupItem> FriendGroupLookup
         {
-            get { return _friendGroups; }
+            get => _friendGroups;
             set
             {
                 _friendGroups = value;
@@ -87,7 +87,7 @@ namespace FriendStorage.UI.ViewModel
 
         public FriendEmailWrapper SelectedEmail
         {
-            get { return _selectedEmail; }
+            get => _selectedEmail;
             set
             {
                 _selectedEmail = value;
