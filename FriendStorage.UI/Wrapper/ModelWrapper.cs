@@ -54,7 +54,7 @@ namespace FriendStorage.UI.Wrapper
 
     public void RejectChanges()
     {
-      foreach (var originalValueEntry in _originalValues)
+      foreach (KeyValuePair<string, object> originalValueEntry in _originalValues)
       {
         typeof(T).GetProperty(originalValueEntry.Key).SetValue(Model, originalValueEntry.Value);
       }
@@ -104,13 +104,13 @@ namespace FriendStorage.UI.Wrapper
     {
       ClearErrors();
 
-      var results = new List<ValidationResult>();
+      List<ValidationResult> results = new List<ValidationResult>();
       var context = new ValidationContext(this);
       Validator.TryValidateObject(this, context, results, true);
 
       if (results.Any())
       {
-        var propertyNames = results.SelectMany(r => r.MemberNames).Distinct().ToList();
+        List<string> propertyNames = results.SelectMany(r => r.MemberNames).Distinct().ToList();
 
         foreach (var propertyName in propertyNames)
         {

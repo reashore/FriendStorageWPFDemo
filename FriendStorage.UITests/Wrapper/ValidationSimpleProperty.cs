@@ -31,7 +31,7 @@ namespace FriendStorage.UITests.Wrapper
       wrapper.FirstName = "";
       Assert.IsTrue(wrapper.HasErrors);
 
-      var errors = wrapper.GetErrors(nameof(wrapper.FirstName)).Cast<string>().ToList();
+      List<string> errors = wrapper.GetErrors(nameof(wrapper.FirstName)).Cast<string>().ToList();
       Assert.AreEqual(1, errors.Count);
       Assert.AreEqual("Firstname is required", errors.First());
 
@@ -105,7 +105,7 @@ namespace FriendStorage.UITests.Wrapper
       Assert.IsFalse(wrapper.IsValid);
       Assert.IsTrue(wrapper.HasErrors);
 
-      var errors = wrapper.GetErrors(nameof(wrapper.FirstName)).Cast<string>().ToList();
+      List<string> errors = wrapper.GetErrors(nameof(wrapper.FirstName)).Cast<string>().ToList();
       Assert.AreEqual(1, errors.Count);
       Assert.AreEqual("Firstname is required", errors.First());
     }

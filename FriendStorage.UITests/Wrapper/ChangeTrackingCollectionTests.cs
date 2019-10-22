@@ -29,7 +29,7 @@ namespace FriendStorage.UITests.Wrapper
     {
       var emailToAdd = new FriendEmailWrapper(new FriendEmail());
 
-      var c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
+      ChangeTrackingCollection<FriendEmailWrapper> c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
       Assert.AreEqual(2, c.Count);
       Assert.IsFalse(c.IsChanged);
 
@@ -53,7 +53,7 @@ namespace FriendStorage.UITests.Wrapper
     public void ShouldTrackRemovedItems()
     {
       var emailToRemove = _emails.First();
-      var c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
+      ChangeTrackingCollection<FriendEmailWrapper> c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
       Assert.AreEqual(2, c.Count);
       Assert.IsFalse(c.IsChanged);
 
@@ -77,7 +77,7 @@ namespace FriendStorage.UITests.Wrapper
     public void ShouldTrackModifiedItem()
     {
       var emailToModify = _emails.First();
-      var c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
+      ChangeTrackingCollection<FriendEmailWrapper> c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
       Assert.AreEqual(2, c.Count);
       Assert.IsFalse(c.IsChanged);
 
@@ -99,7 +99,7 @@ namespace FriendStorage.UITests.Wrapper
     {
       var emailToAdd = new FriendEmailWrapper(new FriendEmail());
 
-      var c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
+      ChangeTrackingCollection<FriendEmailWrapper> c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
       c.Add(emailToAdd);
       emailToAdd.Email = "modified@thomasclaudiushuber.com";
       Assert.IsTrue(emailToAdd.IsChanged);
@@ -115,7 +115,7 @@ namespace FriendStorage.UITests.Wrapper
     {
       var emailToModifyAndRemove = _emails.First();
 
-      var c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
+      ChangeTrackingCollection<FriendEmailWrapper> c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
       emailToModifyAndRemove.Email = "modified@thomasclaudiushuber.com";
       Assert.AreEqual(2, c.Count);
       Assert.AreEqual(0, c.AddedItems.Count);
@@ -140,7 +140,7 @@ namespace FriendStorage.UITests.Wrapper
       var emailToRemove = _emails.Skip(1).First();
       var emailToAdd = new FriendEmailWrapper(new FriendEmail { Email = "anotherOne@thomasclaudiushuber.com" });
 
-      var c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
+      ChangeTrackingCollection<FriendEmailWrapper> c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
 
       c.Add(emailToAdd);
       c.Remove(emailToRemove);
@@ -176,7 +176,7 @@ namespace FriendStorage.UITests.Wrapper
       var emailToRemove = _emails.Skip(1).First();
       var emailToAdd = new FriendEmailWrapper(new FriendEmail { Email = "anotherOne@thomasclaudiushuber.com" });
 
-      var c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
+      ChangeTrackingCollection<FriendEmailWrapper> c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
 
       c.Add(emailToAdd);
       c.Remove(emailToRemove);
@@ -211,7 +211,7 @@ namespace FriendStorage.UITests.Wrapper
     {
       var email = _emails.First();
 
-      var c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
+      ChangeTrackingCollection<FriendEmailWrapper> c = new ChangeTrackingCollection<FriendEmailWrapper>(_emails);
 
       email.Email = "modified@thomasclaudiushuber.com";
       c.Remove(email);

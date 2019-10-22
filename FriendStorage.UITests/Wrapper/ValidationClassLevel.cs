@@ -39,11 +39,11 @@ namespace FriendStorage.UITests.Wrapper
       wrapper.IsDeveloper = true;
       Assert.IsFalse(wrapper.IsValid);
 
-      var emailsErrors = wrapper.GetErrors(nameof(wrapper.Emails)).Cast<string>().ToList();
+      List<string> emailsErrors = wrapper.GetErrors(nameof(wrapper.Emails)).Cast<string>().ToList();
       Assert.AreEqual(1, emailsErrors.Count);
       Assert.AreEqual(expectedError, emailsErrors.Single());
 
-      var isDeveloperErrors = wrapper.GetErrors(nameof(wrapper.IsDeveloper)).Cast<string>().ToList();
+      List<string> isDeveloperErrors = wrapper.GetErrors(nameof(wrapper.IsDeveloper)).Cast<string>().ToList();
       Assert.AreEqual(1, isDeveloperErrors.Count);
       Assert.AreEqual(expectedError, isDeveloperErrors.Single());
     }
@@ -63,10 +63,10 @@ namespace FriendStorage.UITests.Wrapper
       wrapper.IsDeveloper = false;
       Assert.IsTrue(wrapper.IsValid);
 
-      var emailsErrors = wrapper.GetErrors(nameof(wrapper.Emails)).Cast<string>().ToList();
+      List<string> emailsErrors = wrapper.GetErrors(nameof(wrapper.Emails)).Cast<string>().ToList();
       Assert.AreEqual(0, emailsErrors.Count);
 
-      var isDeveloperErrors = wrapper.GetErrors(nameof(wrapper.IsDeveloper)).Cast<string>().ToList();
+      List<string> isDeveloperErrors = wrapper.GetErrors(nameof(wrapper.IsDeveloper)).Cast<string>().ToList();
       Assert.AreEqual(0, isDeveloperErrors.Count);
     }
 
@@ -84,10 +84,10 @@ namespace FriendStorage.UITests.Wrapper
       wrapper.Emails.Add(new FriendEmailWrapper(new FriendEmail { Email = "thomas@thomasclaudiushuber.com" }));
       Assert.IsTrue(wrapper.IsValid);
 
-      var emailsErrors = wrapper.GetErrors(nameof(wrapper.Emails)).Cast<string>().ToList();
+      List<string> emailsErrors = wrapper.GetErrors(nameof(wrapper.Emails)).Cast<string>().ToList();
       Assert.AreEqual(0, emailsErrors.Count);
 
-      var isDeveloperErrors = wrapper.GetErrors(nameof(wrapper.IsDeveloper)).Cast<string>().ToList();
+      List<string> isDeveloperErrors = wrapper.GetErrors(nameof(wrapper.IsDeveloper)).Cast<string>().ToList();
       Assert.AreEqual(0, isDeveloperErrors.Count);
     }
 

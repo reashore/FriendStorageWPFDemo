@@ -13,7 +13,7 @@ namespace FriendStorage.DataAccess
 
     public Friend GetFriendById(int friendId)
     {
-      var friends = ReadFromFile();
+      List<Friend> friends = ReadFromFile();
       return friends.Single(f => f.Id == friendId);
     }
 
@@ -31,7 +31,7 @@ namespace FriendStorage.DataAccess
 
     public void DeleteFriend(int friendId)
     {
-      var friends = ReadFromFile();
+      List<Friend> friends = ReadFromFile();
       var existing = friends.Single(f => f.Id == friendId);
       friends.Remove(existing);
       SaveToFile(friends);
@@ -39,7 +39,7 @@ namespace FriendStorage.DataAccess
 
     private void UpdateFriend(Friend friend)
     {
-      var friends = ReadFromFile();
+      List<Friend> friends = ReadFromFile();
       var existing = friends.Single(f => f.Id == friend.Id);
       var indexOfExisting = friends.IndexOf(existing);
       friends.Insert(indexOfExisting, friend);
@@ -49,7 +49,7 @@ namespace FriendStorage.DataAccess
 
     private void InsertFriend(Friend friend)
     {
-      var friends = ReadFromFile();
+      List<Friend> friends = ReadFromFile();
       var maxFriendId = friends.Max(f => f.Id);
       friend.Id = maxFriendId + 1;
       friends.Add(friend);
